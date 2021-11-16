@@ -505,7 +505,7 @@ public class BluetoothPrinter extends CordovaPlugin {
             byte[] multibyte = new byte[] { 0x1C, 0x26 };
             mmOutputStream.write(multibyte); 
             // Set to UTF-8 
-            byte[] utf8 = new byte[] { 0x1C, 0x43, 0xFF };
+            byte[] utf8 = new byte[] { 0x1C, 0x43, (byte)0xFF };
             mmOutputStream.write(utf8); 
 
             mmOutputStream.write(msg.getBytes(encoding));
