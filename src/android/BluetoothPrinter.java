@@ -502,12 +502,11 @@ public class BluetoothPrinter extends CordovaPlugin {
             // Select character code table (ESC t n) - n = 16(0x10) for WPC1252
 
             // Set to multi-byte encoding type
-            mmOutputStream.write(0x1C); 
-            mmOutputStream.write(0x26);
+            byte[] multibyte = new byte[] { 0x1C, 0x26 };
+            mmOutputStream.write(multibyte); 
             // Set to UTF-8 
-            mmOutputStream.write(0x1C); 
-            mmOutputStream.write(0x43);
-            mmOutputStream.write(0xFF);
+            byte[] utf8 = new byte[] { 0x1C, 0x43, 0xFF };
+            mmOutputStream.write(utf8); 
 
             mmOutputStream.write(msg.getBytes(encoding));
             // tell the user data were sent
